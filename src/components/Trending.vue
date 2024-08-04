@@ -5,7 +5,7 @@
       class="flex items-center  justify-center w-full lg:h-44 h-20"
       v-if="recipe.trending.length === 0"
     >
-      <PulseLoader />
+      <PulseLoader color="#bf0004" />
     </div>
     <Splide :options="options" class="font-Noto-San" v-else>
       <SplideSlide

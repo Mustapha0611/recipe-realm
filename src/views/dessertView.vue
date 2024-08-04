@@ -5,7 +5,7 @@
       class="flex items-center justify-center w-full h-[80dvh]"
       v-if="recipe.recipes.length === 0"
     >
-      <PulseLoader />
+      <PulseLoader color="#bf0004" />
     </section>
    
     <recipeByType :data="recipe.recipes" v-else />

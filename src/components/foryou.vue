@@ -2,7 +2,7 @@
     <div class="">
       <h1 class="font-Noto-San font-semibold my-2">For You</h1>
       <div class="flex items-center justify-center w-full h-44" v-if="recipe.trending.length === 0">
-          <PulseLoader />
+          <PulseLoader color="#bf0004" />
       </div>
       <recipeByType :data="recipe.recipes" v-else/>
     </div>

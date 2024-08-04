@@ -4,7 +4,7 @@
       v-if="recipeDetails.length === 0"
       class="flex items-center justify-center h-[80dvh]"
     >
-      <PulseLoader />
+      <PulseLoader color="#bf0004" />
     </div>
     <div class="flex flex-col justify-center items-center md:items-start md:flex-row gap-5 pt-5" v-else >
       <section class="flex-1 flex-col justify-start items-center ">

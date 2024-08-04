@@ -15,7 +15,7 @@ const recipe = useRecipe();
     <searchBar />
     <div v-if="recipe.isLoading">
       <div class="w-full flex justify-center items-center h-[80dvh]">
-        <PulseLoader />
+        <PulseLoader color="#bf0004" />
       </div>
       <recipeByType :data="recipe.recipes" />
     </div>
