@@ -15,7 +15,7 @@
             <img
               :src="main.image"
               :alt="main.title"
-              class="w-full h-full rounded-t-lg"
+              class="w-full h-full rounded-t-lg object-cover"
           /></router-link>
         </div>
         <p class="text-center font-style text-xs px-3 pt-3 pb-1.5 font-light">

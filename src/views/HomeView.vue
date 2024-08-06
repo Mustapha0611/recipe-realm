@@ -14,10 +14,10 @@ const recipe = useRecipe();
   <main>
     <searchBar />
     <div v-if="recipe.isLoading">
-      <div class="w-full flex justify-center items-center h-[80dvh]">
+      <div class="w-full flex justify-center items-center h-[80dvh]" v-if="recipe.searchedRecipes.length === 0">
         <PulseLoader color="#bf0004" />
       </div>
-      <recipeByType :data="recipe.recipes" />
+      <recipeByType :data="recipe.searchedRecipes" v-else />
     </div>
     <div v-else>
       <categories />

@@ -1,14 +1,14 @@
 import { defineStore } from "pinia";
 import axios from "axios";
-import { isShallow } from "vue";
 export const useRecipe = defineStore({
   id: "allRecipe",
   state: () => ({
     recipes: [],
     trending: [],
     searchedRecipes: [],
-    searchText: "Cook",
-    isLoading:false
+    searchText:'',
+    searchbutton: "Cook",
+    isLoading: false,
   }),
   actions: {
     async getCategory(apiUrl) {
@@ -37,28 +37,33 @@ export const useRecipe = defineStore({
     },
     async getForYou() {
       try {
-        this.recipes = []
+        this.recipes = [];
         const response = await axios.get(
           `https://api.spoonacular.com/recipes/complexSearch?number=8&diet=whole30&apiKey=${
             import.meta.env.VITE_API_KEY
           }`
         );
         this.recipes = response.data;
-        console.log(this.recipe.recipes);
+        console.log(this.recipes.recipes);
       } catch (error) {
         console.error("Error fetching foods:", error);
       }
     },
     async searchRecipe() {
       try {
-        this.isLoading=true
-        this.searchText = "Cooking";
-        this.recipes = [];
-        console.log(this.recipes);
-        const response = await axios.get(apiUrl);
-        this.recipes = response.data;
-        this.searchText = "Cook";
-        console.log(this.recipes);
+        this.isLoading = true;
+        this.searchbutton = "Cooking";
+        this.searchedRecipes = [];
+        console.log(this.searchText)
+        // console.log(this.searchedRecipes.results);
+        const response = await axios.get(
+          `https://api.spoonacular.com/recipes/complexSearch?query=${this.searchText}&apiKey=${
+            import.meta.env.VITE_API_KEY
+          }`
+        );
+        this.searchedRecipes = response.data;
+        this.searchbutton = "Cook";
+        console.log(this.searchedRecipes.results);
       } catch (error) {
         console.error("Error fetching foods:", error);
       }

@@ -17,7 +17,7 @@
             <img
               :src="recipe.image"
               alt=""
-              class="overflow-hidden absolute w-full h-full" />
+              class="overflow-hidden absolute w-full h-full object-cover" />
 
             <p
               class="absolute bottom-10 text-center text-white text-base px-5"

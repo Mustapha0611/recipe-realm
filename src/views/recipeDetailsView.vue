@@ -11,8 +11,8 @@
         <div class="md:w-[90%] w-full m:h-96  rounded-3xl overflow-hidden">
           <img :src="recipeDetails.image" class="w-full h-full" :alt="recipeDetails.title" />
         </div>
-        <div class="my-4">
-            <span class="flex items-center font-Noto-San gap-2 shadow-lg w-36 rounded-md py-2 px-3 text-red-600"><i class="pi pi-clock"></i> {{ recipeDetails.readyInMinutes }} minutes</span>
+        <div class="my-4 flex gap-3 flex-wrap items-center justify-between md:w-[90%] w-full" >
+            <span class="font-style text-red-500">{{ recipeDetails.title }}</span><span class="flex items-center font-Noto-San gap-2 shadow-lg text-xs rounded-md py-2 px-3 text-red-600"><i class="pi pi-clock"></i> {{ recipeDetails.readyInMinutes }} mins</span>
         </div>
       </section>
       <section class="flex-1 font-Noto-San py-5 md:py-0">
