@@ -9,10 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@kyvg/vue3-notification": "^3.2.1",
+    "@primevue/themes": "^4.0.4",
     "@splidejs/vue-splide": "^0.6.12",
     "axios": "^1.7.2",
     "pinia": "^2.1.7",
     "primeicons": "^7.0.0",
+    "primevue": "^4.0.4",
     "vue": "^3.4.29",
     "vue-router": "^4.3.3",
     "vue-spinner": "^1.0.4"

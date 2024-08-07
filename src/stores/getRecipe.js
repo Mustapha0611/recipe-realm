@@ -33,6 +33,7 @@ export const useRecipe = defineStore({
         console.log(this.trending.recipes);
       } catch (error) {
         console.error("Error fetching foods:", error);
+        this.$toast.add({ severity: 'info', summary: 'Info', detail: 'Message Content', life: 3000 });
       }
     },
     async getForYou() {
@@ -47,7 +48,8 @@ export const useRecipe = defineStore({
         console.log(this.recipes.recipes);
       } catch (error) {
         console.error("Error fetching foods:", error);
-      }
+        // console.error("Error fetching foods:", error);
+       }
     },
     async searchRecipe() {
       try {
@@ -66,7 +68,9 @@ export const useRecipe = defineStore({
         console.log(this.searchedRecipes.results);
       } catch (error) {
         console.error("Error fetching foods:", error);
+       
+};
       }
     },
   },
-});
+);

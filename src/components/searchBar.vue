@@ -23,11 +23,14 @@
 <script setup>
 import { useRecipe } from "@/stores/getRecipe";
 import { ref } from "vue";
+import { useToast } from 'primevue/usetoast';
+
+const toast = useToast()
 const recipe = useRecipe();
 const searchedText = ref(useRecipe.searchText);
 const search = () => {
   if (!searchedText.value) {
-    console.log("Fill the form");
+    toast.add({ severity: 'error', summary: 'Content  required', detail: 'Please fill the form', life: 3000 });
   } else {
     console.log(searchedText.value)
     recipe.searchRecipe();

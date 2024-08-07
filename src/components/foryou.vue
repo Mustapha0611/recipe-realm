@@ -18,21 +18,6 @@
   onMounted(() => {
     recipe.getForYou();
   });
-  const options = {
-    type: "loop",
-    // rewind: true,
-    pagination: false,
-    gap: "2rem",
-    autoplay: true,
-    interval: 3000,
-    // focus:0,
-    perPage: 3,
-    arrows: false,
-    breakpoints: {
-      640: {
-        perPage: 2,
-      },
-    },
-  };
+ 
   </script>
   
