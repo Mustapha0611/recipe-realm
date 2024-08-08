@@ -90,8 +90,20 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/recipeDetailsView.vue')
     },
-    
-  ]
+    {
+      path:'/login',
+      name:'login',
+      component:() => import('../views/login.vue')
+    },
+    {
+      path:'/signup',
+      name:'signup',
+      component:() => import('../views/signup.vue')
+    }
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    return { top: 0 }
+  },
 })
 
 export default router

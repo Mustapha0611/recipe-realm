@@ -9,8 +9,8 @@
          
         </section>
         <section>
-            <router-link to="/">
-                <button class="w-10 h-10 opacity-75">
+            <router-link to="login">
+                <button class="w-8 h-8 opacity-75">
                 <img src="@/assets/circle-user.png" alt="logo" class="w-full h-full">
                 </button>
             </router-link>

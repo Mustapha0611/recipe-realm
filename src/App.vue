@@ -2,7 +2,8 @@
 import { RouterView } from "vue-router";
 import navBar from "./components/navBar.vue";
 import Toast from "primevue/toast";
-import { useToast } from "primevue/usetoast";
+// import { useToast } from "primevue/usetoast";
+import "animate.css";
 
 // const toast = useToast();
 // const showSuccess = () => {
@@ -14,13 +15,30 @@ import { useToast } from "primevue/usetoast";
   <Toast
     :pt="{
       root: {
-        class:'!w-72',
+        class: '!w-72',
       },
     }"
   />
   <navBar />
   <div class="lg:px-32 md:px-10 px-4">
-    <RouterView />
+    <router-view v-slot="{ Component }">
+      <transition
+      name="fade"
+      >
+        <component :is="Component" />
+      </transition>
+    </router-view>
   </div>
 </template>
-<style scoped></style>
+<style scoped>
+/* we will explain what these classes do next! */
+/* .fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+} */
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
