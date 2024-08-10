@@ -12,6 +12,7 @@
     "@kyvg/vue3-notification": "^3.2.1",
     "@primevue/themes": "^4.0.4",
     "@splidejs/vue-splide": "^0.6.12",
+    "@supabase/supabase-js": "^2.45.1",
     "animate.css": "^4.1.1",
     "axios": "^1.7.2",
     "pinia": "^2.1.7",

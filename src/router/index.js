@@ -99,6 +99,11 @@ const router = createRouter({
       path:'/signup',
       name:'signup',
       component:() => import('../views/signup.vue')
+    }, 
+    {
+      path:'/dashboard',
+      name:'dashboard',
+      component:() => import('../views/dashboard.vue')
     }
   ],
   scrollBehavior(to, from, savedPosition) {
