@@ -17,17 +17,18 @@
         <label for="Password">Password</label
         ><input
           type="password"
-          class="px-3 py-2 text-xs bg-red-50  outline-none rounded-md"
+          class="px-3 py-2 text-xs bg-red-50 outline-none rounded-md"
           placeholder="enter your password"
           aria-label="password"
-           v-model="password"
+          v-model="password"
         />
       </div>
       <div>
         <button
-        @click.prevent="SignIn()"
+          @click.prevent="SignIn()"
           class="w-full bg-red-700 font-bold hover:border-red-700 hover:bg-white hover:text-red-700 transition-colors duration-300 border-2 h py-2 text-slate-50 rounded-md"
-        > <span v-if="loggingin"><i class="pi pi-spin pi-spinner"></i></span>
+        >
+          <span v-if="loggingin"><i class="pi pi-spin pi-spinner"></i></span>
           <span v-else>Login</span>
         </button>
         <p class="pt-4">
@@ -43,21 +44,23 @@
 </template>
 <script setup>
 import { useToast } from "primevue/usetoast";
-import 'primeicons/primeicons.css'
+import "primeicons/primeicons.css";
 import { supabase } from "@/supabase/init";
+import { useAuth } from "../stores/auth.js";
 import { ref } from "vue";
-import { useRouter } from 'vue-router'
+import { useRouter } from "vue-router";
 
+const auth = useAuth();
 const email = ref("");
 const password = ref("");
 const toast = useToast();
-const route = useRouter()
-const loggingin= ref(false)
+const route = useRouter();
+const loggingin = ref(false);
 
 const SignIn = async () => {
-   loggingin.value= true
-  if ( !email.value || !password.value) {
-    loggingin.value = false
+  loggingin.value = true;
+  if (!email.value || !password.value) {
+    loggingin.value = false;
     toast.add({
       severity: "error",
       summary: "Content required",
@@ -67,7 +70,7 @@ const SignIn = async () => {
   } else {
     const { error } = await supabase.auth.signInWithPassword({
       email: email.value,
-      password: password.value
+      password: password.value,
     });
 
     if (error) {
@@ -77,15 +80,14 @@ const SignIn = async () => {
         detail: error.message,
         life: 3000,
       });
-      loggingin.value=false
+      loggingin.value = false;
     } else {
       route.push({
-      name:'dashboard'
-    })
+        name: "dashboard",
+      });
+      auth.setLoggedIn();
+      auth.getCurrentUser();
     }
-   
   }
- 
-
 };
 </script>

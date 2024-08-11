@@ -21,13 +21,7 @@ import "animate.css";
   />
   <navBar />
   <div class="lg:px-32 md:px-10 px-4">
-    <router-view v-slot="{ Component }">
-      <transition
-      name="fade"
-      >
-        <component :is="Component" />
-      </transition>
-    </router-view>
+   <router-view></router-view>
   </div>
 </template>
 <style scoped>

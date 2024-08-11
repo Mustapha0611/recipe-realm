@@ -10,7 +10,8 @@
           type="email"
           class="px-3 py-2 bg-red-50 outline-none font-Roboto text-xs text-orange-800 rounded-md"
           placeholder="Enter your Email"
-          v-model="email" required
+          v-model="email"
+          required
         />
       </div>
       <div class="flex flex-col gap-2">
@@ -20,7 +21,8 @@
           class="px-3 py-2 bg-red-50 outline-none font-Roboto text-xs text-orange-800 rounded-md"
           placeholder="Select a username"
           aria-label="username"
-          v-model="username" required
+          v-model="username"
+          required
         />
       </div>
       <div class="flex flex-col gap-2">
@@ -29,7 +31,8 @@
           type="password"
           class="px-3 py-2 bg-red-50 outline-none font-Roboto text-xs text-orange-800 rounded-md"
           placeholder="Select your password"
-          v-model="password" required
+          v-model="password"
+          required
         />
       </div>
       <div>
@@ -37,7 +40,9 @@
           class="w-full bg-red-700 font-bold hover:border-red-700 hover:bg-white hover:text-red-700 transition-colors duration-300 border-2 h py-2 text-slate-50 rounded-md"
           @click.prevent="SignUp()"
         >
-          <span v-if="loggingin"><i class="pi pi-spin pi-spinner"></i></span>
+          <span v-if="signUploading"
+            ><i class="pi pi-spin pi-spinner"></i
+          ></span>
           <span v-else>Sign Up</span>
         </button>
         <p class="pt-4">
@@ -54,18 +59,19 @@ import { useToast } from "primevue/usetoast";
 import { supabase } from "@/supabase/init";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import 'primeicons/primeicons.css'
+import "primeicons/primeicons.css";
 
 const username = ref("");
 const email = ref("");
 const password = ref("");
 const toast = useToast();
 const route = useRouter();
-const signUploading = ref(false)
+let signUploading = ref(false);
 const SignUp = async () => {
-  signUploading = true
+  signUploading.value = true;
+  console.log(signUploading)
   if (!email.value || !password.value) {
-    signUploading = false
+    signUploading.value = false;
     toast.add({
       severity: "error",
       summary: "Content required",
@@ -104,14 +110,15 @@ const SignUp = async () => {
         detail: "Proceed to login",
         life: 3000,
       });
+      route.push({
+        name: "login",
+      });
     }
-    signUploading =false
+    signUploading.value = false;
+    console.log(signUploading.value)
     password.value = "";
     email.value = "";
     username.value = "";
   }
-  route.push({
-    name: "login",
-  });
 };
 </script>
