@@ -21,7 +21,7 @@
         </span>
         <router-link
           v-else
-          to="login"
+          :to="{ name: 'login' }"
           class="border-2 border-orange-700 px-6 font-Roboto text-orange-700 py-2 rounded-3xl"
         >
           Login
@@ -33,7 +33,6 @@
       >
         <img src="@/assets/circle-user.png" alt="logo" class="w-8 h-8" />
       </div> -->
-  
     </section>
   </header>
 </template>
@@ -46,9 +45,9 @@ const router = useRouter();
 const auth = useAuth();
 
 const signOut = () => {
+  auth.logOut();
   router.push({
     name: "login",
   });
-  auth.logOut();
 };
 </script>
