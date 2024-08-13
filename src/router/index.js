@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import { useAuth } from '@/stores/auth'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -103,12 +104,25 @@ const router = createRouter({
     {
       path:'/dashboard',
       name:'dashboard',
-      component:() => import('../views/dashboard.vue')
+      component:() => import('../views/dashboard.vue'),
+      meta:{
+        requiresAuth:true
+      }
     }
   ],
   scrollBehavior(to, from, savedPosition) {
     return { top: 0 }
   },
 })
+router.beforeEach((to, from, next) => {
+  const auth = useAuth();
 
+  if (to.meta.requiresAuth && !auth.user ) {
+    // User is not authenticated, redirect to login page
+    next({ name: 'login' });
+  } else {
+    // Allow access
+    next();
+  }
+})
 export default router

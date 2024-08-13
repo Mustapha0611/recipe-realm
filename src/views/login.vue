@@ -54,7 +54,7 @@ const auth = useAuth();
 const email = ref("");
 const password = ref("");
 const toast = useToast();
-const route = useRouter();
+const router = useRouter();
 const loggingin = ref(false);
 
 const SignIn = async () => {
@@ -72,7 +72,6 @@ const SignIn = async () => {
       email: email.value,
       password: password.value,
     });
-
     if (error) {
       toast.add({
         severity: "error",
@@ -80,12 +79,11 @@ const SignIn = async () => {
         detail: error.message,
         life: 3000,
       });
-      loggingin.value = false;
     } else {
-      route.push({
+      router.push({
         name: "dashboard",
       });
-      auth.setLoggedIn();
+      loggingin.value = false;
       auth.getCurrentUser();
     }
   }

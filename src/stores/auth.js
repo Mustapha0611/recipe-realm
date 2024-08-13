@@ -1,28 +1,35 @@
 import { defineStore } from "pinia";
 import { supabase } from "@/supabase/init";
 
-
 export const useAuth = defineStore({
   id: "Auth",
   state: () => ({
-    isLoggedIn: null,
-    user:[]
+    // isLoggedIn: null,
+    user: null,
   }),
   actions: {
-    setLoggedIn() {
-      this.isLoggedIn = true;
+    // setLoggedIn() {
+    //   this.isLoggedIn = true;
+    //   localStorage.setItem("loggedIn", this.isLoggedIn);
+    // },
+    loadUser() {
+      const storedUser = localStorage.getItem("user");
+      if (storedUser) {
+        this.user = JSON.parse(storedUser);
+      }
     },
     async getCurrentUser() {
-      this.isLoggedIn = true
       const user = await supabase.auth.getUser();
-      this.user = user
-      console.log('user sign in')
-       console.log(user);
+      this.user = user;
+      localStorage.setItem('user', JSON.stringify(user));
+      console.log("user sign in");
+      console.log(user);
     },
     async logOut() {
       const { error } = await supabase.auth.signOut();
-      this.isLoggedIn =false
-      console.log('user sign out')
+      this.user = null
+      localStorage.removeItem("user");
+      console.log("user sign out");
     },
   },
 });

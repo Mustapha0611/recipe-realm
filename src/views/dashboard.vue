@@ -30,38 +30,14 @@
     </section>
   </div>
 </template>
-<!-- <script setup>
-import { supabase } from "../supabase/init.js";
-import { useAuth } from "../stores/auth.js";
-import "primeicons/primeicons.css";
-import { onMounted,ref } from "vue";
-const auth = useAuth();
-onMounted(() => {
-  auth.getCurrentUser();
-});
-
-const dataLoading = ref(false) 
-auth.getCurrentUser()
-</script> -->
 <script setup>
-import { supabase } from "../supabase/init.js";
 import { useAuth } from "../stores/auth.js";
 import 'primeicons/primeicons.css'
-import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 
 const auth = useAuth();
 const router = useRouter();
-const isLoading = ref(false);
 
-onMounted(async () => {
-  isLoading.value = true;
-  try {
-    await auth.getCurrentUser();
-  } finally {
-    isLoading.value = false;
-  }
-});
 
 const createNewRecipe = () => {
   router.push("/create-recipe");
