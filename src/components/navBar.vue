@@ -5,7 +5,7 @@
     <section>
       <router-link to="/">
         <button class="w-24 h-20">
-          <img src="@/assets/logo.png" alt="logo" class="w-full h-full" />
+          <img src="@/assets/logo.png" alt="logo" class="w-24 h-20" />
         </button>
       </router-link>
     </section>

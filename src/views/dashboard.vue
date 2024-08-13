@@ -30,14 +30,16 @@
     </section>
   </div>
 </template>
+
 <script setup>
+
 import { useAuth } from "../stores/auth.js";
 import 'primeicons/primeicons.css'
 import { useRouter } from "vue-router";
-
+import {ref} from 'vue'
 const auth = useAuth();
 const router = useRouter();
-
+const isLoading = ref(false);
 
 const createNewRecipe = () => {
   router.push("/create-recipe");

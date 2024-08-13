@@ -20,8 +20,11 @@ app.use(PrimeVue, {
     preset: Aura,
   },
 });
+//Load session and current user on reload
 const auth = useAuth();
+auth.loadSession();
 auth.loadUser();
+
 
 app.use(ToastService);
 

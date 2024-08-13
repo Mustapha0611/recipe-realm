@@ -7,15 +7,17 @@
     >
       <PulseLoader color="#bf0004" />
     </div>
-    <Splide :options="options" class="font-Noto-San" v-else>
+    <Splide :options="options" class="font-Noto-San" v-else aria-label="slider">
       <SplideSlide
         v-for="recipe of recipe.trending.recipes"
+        role="button"
         class="bg-red-200 text-xs overflow-hidden relative h-64 font-semibold text-center text-slate-900 rounded-3xl"
       >
         <div>
-          <router-link :to="{name:'recipe-details', params:{id:recipe.id}}">
+          <router-link :to="{name:'recipe-details', params:{id:recipe.id}}" role="link">
             <img
               :src="recipe.image"
+              loading="lazy"
               alt=""
               class="overflow-hidden absolute w-full h-full object-cover" />
 

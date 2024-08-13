@@ -14,10 +14,10 @@ export const useRecipe = defineStore({
     async getCategory(apiUrl) {
       try {
         this.recipes = [];
-        console.log(this.recipes);
+        // console.log(this.recipes);
         const response = await axios.get(apiUrl);
         this.recipes = response.data;
-        console.log(this.recipes);
+        // console.log(this.recipes);
       } catch (error) {
         console.error("Error fetching foods:", error);
       }
@@ -45,7 +45,7 @@ export const useRecipe = defineStore({
           }`
         );
         this.recipes = response.data;
-        console.log(this.recipes.recipes);
+        // console.log(this.recipes.recipes);
       } catch (error) {
         console.error("Error fetching foods:", error);
         // console.error("Error fetching foods:", error);
@@ -56,7 +56,7 @@ export const useRecipe = defineStore({
         this.isLoading = true;
         this.searchbutton = "Cooking";
         this.searchedRecipes = [];
-        console.log(this.searchText)
+        // console.log(this.searchText)
         // console.log(this.searchedRecipes.results);
         const response = await axios.get(
           `https://api.spoonacular.com/recipes/complexSearch?query=${this.searchText}&apiKey=${
@@ -65,7 +65,7 @@ export const useRecipe = defineStore({
         );
         this.searchedRecipes = response.data;
         this.searchbutton = "Cook";
-        console.log(this.searchedRecipes.results);
+        // console.log(this.searchedRecipes.results);
       } catch (error) {
         console.error("Error fetching foods:", error);
        
