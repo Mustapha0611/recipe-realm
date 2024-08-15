@@ -71,6 +71,7 @@ const SignIn = async () => {
     const { error } = await supabase.auth.signInWithPassword({
       email: email.value,
       password: password.value,
+
     });
     if (error) {
       toast.add({
@@ -81,9 +82,11 @@ const SignIn = async () => {
       });
       loggingin.value = false
     } else {
+      auth.setLoggedIn()
       router.push({
         name: "dashboard",
       });
+      console.log(auth.isLoggedIn)
       loggingin.value = false;
       email.value=''
       password.value = ''

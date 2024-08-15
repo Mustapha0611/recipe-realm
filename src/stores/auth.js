@@ -4,7 +4,7 @@ import { supabase } from "@/supabase/init";
 export const useAuth = defineStore({
   id: "Auth",
   state: () => ({
-    isLoggedIn: null,
+    isLoggedIn: false,
     user: null,
   }),
   actions: {
@@ -20,10 +20,8 @@ export const useAuth = defineStore({
       }
     },
     loadSession() {
-      const sessionStatus = localStorage.getItem('loggedIn');
-      if (sessionStatus) {
-        this.isLoggedIn = sessionStatus;
-      }
+      this.isLoggedIn = localStorage.getItem('loggedIn')
+      console.log(this.isLoggedIn)
     },
     async getCurrentUser() {
       const user = await supabase.auth.getUser();
