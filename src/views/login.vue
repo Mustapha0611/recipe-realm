@@ -79,11 +79,14 @@ const SignIn = async () => {
         detail: error.message,
         life: 3000,
       });
+      loggingin.value = false
     } else {
       router.push({
         name: "dashboard",
       });
       loggingin.value = false;
+      email.value=''
+      password.value = ''
       auth.getCurrentUser();
     }
   }

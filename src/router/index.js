@@ -117,7 +117,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const auth = useAuth();
 
-  if (to.meta.requiresAuth && !auth.isLoggedIn ) {
+  if (to.meta.requiresAuth && !auth.user ) {
     // User is not authenticated, redirect to login page
     next({ name: 'login' });
   } else {

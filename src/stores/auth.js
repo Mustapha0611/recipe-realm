@@ -16,6 +16,7 @@ export const useAuth = defineStore({
       const storedUser = localStorage.getItem("user");
       if (storedUser) {
         this.user = JSON.parse(storedUser);
+        console.log(this.user)
       }
     },
     loadSession() {
@@ -28,6 +29,7 @@ export const useAuth = defineStore({
       const user = await supabase.auth.getUser();
       this.user = user;
       localStorage.setItem('user', JSON.stringify(user));
+      console.log(localStorage.getItem('user'))
       console.log("user sign in");
       console.log(user);
     },
