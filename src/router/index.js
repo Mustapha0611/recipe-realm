@@ -108,6 +108,10 @@ const router = createRouter({
       meta:{
         requiresAuth:true
       }
+    },{
+      path:'/create-recipe',
+      name:'create-recipe',
+      component:() => import('../views/createRecipeView.vue')
     }
   ],
   scrollBehavior(to, from, savedPosition) {
@@ -116,8 +120,9 @@ const router = createRouter({
 })
 router.beforeEach((to, from, next) => {
   const auth = useAuth();
+  auth.getCurrentUser
 
-  if (to.meta.requiresAuth && !auth.isLoggedIn ) {
+  if (to.meta.requiresAuth && !auth.getCurrentUser ) {
     // User is not authenticated, redirect to login page
     next({ name: 'login' });
   } else {

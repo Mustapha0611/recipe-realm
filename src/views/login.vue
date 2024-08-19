@@ -5,7 +5,7 @@
     >
       <h1 class="text-2xl font-semibold font-Roboto text-orange-600">Login</h1>
       <div class="flex flex-col gap-2">
-        <label for="username">Email</label
+        <label for="email">Email</label
         ><input
           type="email"
           class="px-3 text-xs py-2 text-red-700 bg-red-50 outline-none rounded-md"
