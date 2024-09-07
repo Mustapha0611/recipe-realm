@@ -17,7 +17,7 @@
     </section>
     <section class="flex flex-col justify-center items-center w-full">
       <span class="">
-        <img src="@/assets/men.jpg" alt="chefs" class="w-96 h-96" />
+        <img src="@/assets/men.png" alt="chefs" class="w-96 h-96" />
       </span>
       <span>
         <button

@@ -13,7 +13,7 @@
       <button
         type="submit"
         @click.prevent="search()"
-        class="bg-red-400 font-style text-white px-4 md:px-7 py-2 md:py-3 rounded-xl"
+        class="bg-red-700 font-style text-white px-4 md:px-7 py-2 md:py-3 rounded-xl"
       >
         {{ recipe.searchbutton }}
       </button>

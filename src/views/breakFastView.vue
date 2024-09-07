@@ -24,6 +24,5 @@ const recipe = useRecipe()
 onMounted(() => {
     recipe.getCategory(apiUrl)
   console.log(apiUrl)
-  // Add fetch or axios code to retrieve data here
 })
 </script>

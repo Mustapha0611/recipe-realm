@@ -27,6 +27,7 @@
 </template>
 <script setup>
 import { defineProps } from "vue";
+
 defineProps({
   data: Object,
 });
