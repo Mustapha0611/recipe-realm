@@ -20,11 +20,12 @@
         <img src="@/assets/men.png" alt="chefs" class="w-96 h-96" />
       </span>
       <span>
-        <button
+        <router-link
+          to="/create-recipe"
           class="flex gap-2 items-center text-white hover:bg-slate-50 hover:text-red-700 border-2 border-red-700 transition-all bg-red-700 rounded-md py-2 px-4 font-semibold"
         >
           Create new recipe <i class="pi pi-plus"></i>
-        </button>
+        </router-link>
       </span>
       <div></div>
     </section>
