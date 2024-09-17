@@ -139,7 +139,7 @@ const submitRecipe = async () => {
   try {
     isLoading.value = true;
 
-    // Step 1: Insert recipe details into database
+    // Step 1: Insert recipe details into the database
     const { data: recipeData, error: insertError } = await supabase
       .from("Recipe-details")
       .insert({
@@ -169,13 +169,18 @@ const submitRecipe = async () => {
       .upload(imagePath, imageFile.value);
 
     if (imageError) {
-      throw new Error(`Image upload failed: ${imageError.message}`);
+      console.error(`Image upload failed: ${imageError.message}`);
+      throw new Error("Image upload failed. Check Supabase storage permissions and file size limits.");
     }
 
     // Step 4: Get the public URL for the uploaded image
-    const publicUrl = supabase.storage
+    const { publicUrl } = supabase.storage
       .from("recipe-images")
-      .getPublicUrl(imagePath).publicUrl;
+      .getPublicUrl(imagePath);
+
+    if (!publicUrl) {
+      throw new Error("Failed to retrieve the public URL for the image.");
+    }
 
     // Step 5: Update the recipe with the image URL
     const { error: updateError } = await supabase
@@ -197,12 +202,13 @@ const submitRecipe = async () => {
     steps.value = [];
     imageFile.value = null;
   } catch (error) {
-    console.error(error.message);
+    console.error("Error during submission:", error.message);
     toast.add({ severity: "error", summary: "Error", detail: error.message });
   } finally {
     isLoading.value = false;
   }
 };
+
 </script>
 
 <style scoped>
